@@ -1,0 +1,1516 @@
+mov edi edi +
+push ebp  +
+mov ebp esp +
+sub esp 0Ch +
+push esi  +
+mov esi [ebp+arg_4] +
+mov ecx [esi] +
+xor eax eax +
+cmp [ebp+arg_0] 7 +
+mov [ebp+var_4] eax +
+mov [ebp+var_8] eax +
+mov [ebp+var_C] eax +
+mov dword_100437C ecx +
+jnz loc_1001C16  +
+push ebx  +
+mov ebx ds:_wcsicmp +
+push edi  +
+xor edi edi +
+inc edi  +
+cmp [ebp+var_4] eax +
+jz loc_1001B7C  +
+mov ecx [esi+edi*4] +
+mov [ebp+var_4] eax +
+mov lpName ecx +
+jmp loc_1001BED  +
+cmp [ebp+var_8] eax +
+jz loc_1001B8F  +
+mov ecx [esi+edi*4] +
+mov [ebp+var_8] eax +
+mov dword_1004380 ecx +
+jmp loc_1001BED  +
+cmp [ebp+var_C] eax +
+jz loc_1001BA2  +
+mov ecx [esi+edi*4] +
+mov [ebp+var_C] eax +
+mov dword_1004378 ecx +
+jmp loc_1001BED  +
+push offset aRegionname  +
+push dword ptr [esi+edi*4]  +
+call ebx  +
+pop ecx  +
+pop ecx  +
+test eax eax +
+jnz loc_1001BBB  +
+mov [ebp+var_4] 1 +
+jmp loc_1001BEB  +
+push offset aSignalready  +
+push dword ptr [esi+edi*4]  +
+call ebx  +
+pop ecx  +
+pop ecx  +
+test eax eax +
+jnz loc_1001BD4  +
+mov [ebp+var_8] 1 +
+jmp loc_1001BEB  +
+push offset aSignalcomplete  +
+push dword ptr [esi+edi*4]  +
+call ebx  +
+pop ecx  +
+pop ecx  +
+test eax eax +
+jnz loc_1001BEB  +
+mov [ebp+var_C] 1 +
+xor eax eax +
+inc edi  +
+cmp edi 7 +
+jl loc_1001B69  +
+pop edi  +
+pop ebx  +
+cmp dword_1004378 eax +
+jz loc_1001C16  +
+cmp dword_1004380 eax +
+jz loc_1001C16  +
+cmp lpName eax +
+jz loc_1001C16  +
+xor eax eax +
+inc eax  +
+jmp loc_1001C18  +
+xor eax eax +
+pop esi  +
+leave   +
+retn 8  +
+***
+mov edi edi +
+push ebp  +
+mov ebp esp +
+mov eax 1004h +
+call __alloca_probe  +
+mov eax dword_1004000 +
+xor eax ebp +
+mov [ebp+var_4] eax +
+push 800h  +
+lea eax [ebp+Buffer] +
+push eax  +
+push 1  +
+push 0  +
+call ds:GetModuleHandleW  +
+push eax  +
+call ds:LoadStringW  +
+test eax eax +
+jz loc_1001C7B  +
+lea eax [ebp+Buffer] +
+push eax  +
+push offset aS  +
+call ds:__iob_func  +
+add eax 40h +
+push eax  +
+call ds:fwprintf  +
+add esp 0Ch +
+mov ecx [ebp+var_4] +
+xor ecx ebp +
+call sub_10029C0  +
+leave   +
+retn   +
+***
+mov edi edi +
+push ebp  +
+mov ebp esp +
+mov ecx [ebp+arg_4] +
+xor eax eax +
+test ecx ecx +
+jz loc_1001CA2  +
+cmp ecx 7FFFFFFFh +
+jbe loc_1001CA7  +
+mov eax 80070057h +
+test eax eax +
+jl loc_1001CF2  +
+mov eax [ebp+arg_0] +
+push ebx  +
+xor ebx ebx +
+push esi  +
+mov esi ecx +
+test ecx ecx +
+jz loc_1001CE2  +
+mov edx [ebp+arg_8] +
+push edi  +
+mov edi 7FFFFFFEh +
+sub edi ecx +
+sub edx eax +
+lea ecx [edi+esi] +
+test ecx ecx +
+jz loc_1001CDD  +
+movzx ecx word ptr [edx+eax] +
+test cx cx +
+jz loc_1001CDD  +
+mov [eax] cx +
+inc eax  +
+inc eax  +
+dec esi  +
+jnz loc_1001CC5  +
+pop edi  +
+test esi esi +
+jnz loc_1001CE9  +
+dec eax  +
+dec eax  +
+mov ebx 8007007Ah +
+xor ecx ecx +
+mov [eax] cx +
+pop esi  +
+mov eax ebx +
+pop ebx  +
+pop ebp  +
+retn 0Ch  +
+***
+mov edi edi +
+push ebp  +
+mov ebp esp +
+mov ecx [ebp+arg_4] +
+xor eax eax +
+test ecx ecx +
+jz loc_1001D11  +
+cmp ecx 7FFFFFFFh +
+jbe loc_1001D16  +
+mov eax 80070057h +
+test eax eax +
+jl loc_1001D52  +
+push ebx  +
+push esi  +
+push edi  +
+push [ebp+arg_C]  +
+mov edi [ebp+arg_0] +
+push [ebp+arg_8]  +
+lea esi [ecx-1] +
+push esi  +
+push edi  +
+xor ebx ebx +
+call ds:_vsnwprintf  +
+add esp 10h +
+test eax eax +
+jl loc_1001D42  +
+cmp eax esi +
+ja loc_1001D42  +
+jnz loc_1001D4D  +
+jmp loc_1001D47  +
+mov ebx 8007007Ah +
+xor eax eax +
+mov [edi+esi*2] ax +
+pop edi  +
+pop esi  +
+mov eax ebx +
+pop ebx  +
+pop ebp  +
+retn 10h  +
+***
+mov edi edi +
+push ebp  +
+mov ebp esp +
+sub esp 808h +
+mov eax dword_1004000 +
+xor eax ebp +
+mov [ebp+var_4] eax +
+lea eax [ebp+arg_8] +
+push eax  +
+push [ebp+arg_4]  +
+lea eax [ebp+var_808] +
+push 402h  +
+push eax  +
+call sub_1001CFB  +
+lea eax [ebp+var_808] +
+push eax  +
+push offset aWs  +
+push [ebp+arg_0]  +
+push 2  +
+call ds:DbgPrintEx  +
+mov ecx [ebp+var_4] +
+xor ecx ebp +
+add esp 10h +
+call sub_10029C0  +
+leave   +
+retn   +
+***
+call __SEH_prolog4  +
+xor edi edi +
+mov [ebp+var_1C] edi +
+mov [ebp+var_20] edi +
+mov esi [ebp+arg_0] +
+mov ebx [esi+8] +
+mov dword ptr [ebp+var_28] ebx +
+cmp [ebp+hModule] edi +
+jnz loc_1001DE3  +
+mov eax [ebp+arg_8] +
+or dword ptr [eax] 0FFFFFFFFh +
+push 57h  +
+pop eax  +
+jmp loc_1001F4B  +
+mov [ebp+var_24] edi +
+mov [ebp+ms_exc.disabled] edi +
+push offset ProcName  +
+push [ebp+hModule]  +
+call ds:GetProcAddress  +
+mov [ebp+var_24] eax +
+mov [ebp+ms_exc.disabled] 0FFFFFFFEh +
+jmp loc_1001E1F  +
+mov eax [ebp-14h] +
+mov [ebp-1Ch] eax +
+xor eax eax +
+inc eax  +
+retn   +
+mov esp [ebp-18h] +
+mov dword ptr [ebp-4] 0FFFFFFFEh +
+mov esi [ebp+8] +
+mov ebx [ebp-28h] +
+xor edi edi +
+mov eax [ebp+var_1C] +
+cmp eax edi +
+jz loc_1001E5B  +
+mov eax [eax] +
+mov eax [eax] +
+mov [ebp+var_20] eax +
+push dword ptr [esi]  +
+push offset aProcessingOleC  +
+push 1  +
+push 2  +
+pop edi  +
+push edi  +
+push 0  +
+push ebx  +
+call ds:SetupWriteTextLog  +
+push offset aWowreg32___e_0  +
+push edi  +
+call sub_1001D5B  +
+add esp 20h +
+mov eax [ebp+arg_8] +
+mov [eax] edi +
+jmp loc_1001F48  +
+cmp [ebp+var_24] edi +
+jz loc_1001F3F  +
+push offset aWowreg32Instal  +
+push 2  +
+pop edi  +
+push edi  +
+call sub_1001D5B  +
+pop ecx  +
+pop ecx  +
+mov eax [ebp+arg_8] +
+mov dword ptr [eax] 4 +
+mov [ebp+ms_exc.disabled] 1 +
+push dword ptr [esi+10h]  +
+push dword ptr [esi+0Ch]  +
+call [ebp+var_24]  +
+mov [ebp+hModule] eax +
+xor ecx ecx +
+cmp eax ecx +
+jge loc_1001EAA  +
+mov [ebp+var_20] eax +
+push eax  +
+push dword ptr [esi]  +
+push offset aDllinstall_0  +
+push offset aCallingWsInO_2  +
+push 1  +
+jmp loc_1001EBA  +
+jz loc_1001EC8  +
+push eax  +
+push dword ptr [esi]  +
+push offset aDllinstall_0  +
+push offset aCallingWsInO_0  +
+push edi  +
+push edi  +
+push ecx  +
+push ebx  +
+call ds:SetupWriteTextLog  +
+add esp 20h +
+jmp loc_1001F29  +
+push dword ptr [esi]  +
+push offset aDllinstall_0  +
+push offset aCallingWsInO_1  +
+push 6  +
+push edi  +
+push ecx  +
+push ebx  +
+call ds:SetupWriteTextLog  +
+add esp 1Ch +
+jmp loc_1001F29  +
+mov eax [ebp-14h] +
+mov [ebp-1Ch] eax +
+xor eax eax +
+inc eax  +
+retn   +
+mov esp [ebp-18h] +
+mov eax [ebp-1Ch] +
+mov eax [eax] +
+mov eax [eax] +
+mov [ebp-20h] eax +
+mov eax [ebp+8] +
+push dword ptr [eax]  +
+push offset aDllinstall_0  +
+push offset aCallingWsInO_3  +
+push 1  +
+push 2  +
+pop edi  +
+push edi  +
+push 0  +
+push dword ptr [ebp+var_28]  +
+call ds:SetupWriteTextLog  +
+push offset aWowreg32___e_1  +
+push edi  +
+call sub_1001D5B  +
+add esp 24h +
+mov [ebp+ms_exc.disabled] 0FFFFFFFEh +
+push offset aWowreg32___ins  +
+push edi  +
+call sub_1001D5B  +
+pop ecx  +
+pop ecx  +
+jmp loc_1001F48  +
+mov eax [ebp+arg_8] +
+mov dword ptr [eax] 2 +
+mov eax [ebp+var_20] +
+call __SEH_epilog4  +
+retn 0Ch  +
+***
+call __SEH_prolog4  +
+xor ebx ebx +
+mov [ebp+var_24] ebx +
+mov [ebp+var_20] ebx +
+mov esi [ebp+arg_0] +
+mov eax [esi+8] +
+mov dword ptr [ebp+var_1C] eax +
+cmp [ebp+hModule] ebx +
+jnz loc_1001F82  +
+push 57h  +
+pop eax  +
+jmp loc_1002146  +
+mov [ebp+var_28] ebx +
+mov [ebp+ms_exc.disabled] ebx +
+cmp [esi+0Ch] ebx +
+mov eax offset aDllregisterser +
+jnz loc_1001F97  +
+mov eax offset aDllunregisters +
+push eax  +
+push [ebp+hModule]  +
+call ds:GetProcAddress  +
+mov [ebp+var_28] eax +
+mov [ebp+ms_exc.disabled] 0FFFFFFFEh +
+jmp loc_1001FC6  +
+mov eax [ebp-14h] +
+mov [ebp-24h] eax +
+xor eax eax +
+inc eax  +
+retn   +
+mov esp [ebp-18h] +
+mov dword ptr [ebp-4] 0FFFFFFFEh +
+xor ebx ebx +
+mov esi [ebp+8] +
+mov eax [ebp+var_24] +
+cmp eax ebx +
+jz loc_1001FFB  +
+mov eax [eax] +
+mov eax [eax] +
+mov [ebp+var_20] eax +
+push dword ptr [esi]  +
+push offset aProcessingOleC  +
+push 1  +
+push 2  +
+pop edi  +
+push edi  +
+push ebx  +
+push dword ptr [ebp+var_1C]  +
+call ds:SetupWriteTextLog  +
+push offset aWowreg32___e_0  +
+push edi  +
+call sub_1001D5B  +
+jmp loc_100213B  +
+cmp [ebp+var_28] ebx +
+jz loc_1002108  +
+push offset aWowreg32Regist  +
+push 2  +
+pop edi  +
+push edi  +
+call sub_1001D5B  +
+pop ecx  +
+pop ecx  +
+mov eax [ebp+arg_8] +
+mov dword ptr [eax] 3 +
+mov [ebp+ms_exc.disabled] 1 +
+call [ebp+var_28]  +
+mov [ebp+hModule] eax +
+cmp eax ebx +
+jge loc_100204D  +
+mov [ebp+var_20] eax +
+cmp [esi+0Ch] ebx +
+mov ecx offset aDllregisters_0 +
+jnz loc_1002040  +
+mov ecx offset aDllunregiste_0 +
+push eax  +
+push dword ptr [esi]  +
+push ecx  +
+push offset aCallingWsInOle  +
+push 1  +
+jmp loc_1002068  +
+jz loc_1002078  +
+cmp [esi+0Ch] ebx +
+mov ecx offset aDllregisters_0 +
+jnz loc_100205E  +
+mov ecx offset aDllunregiste_0 +
+push eax  +
+push dword ptr [esi]  +
+push ecx  +
+push offset aCallingWsInO_0  +
+push edi  +
+push edi  +
+push ebx  +
+push dword ptr [ebp+var_1C]  +
+call ds:SetupWriteTextLog  +
+add esp 20h +
+jmp loc_10020F2  +
+cmp [esi+0Ch] ebx +
+mov eax offset aDllregisters_0 +
+jnz loc_1002087  +
+mov eax offset aDllunregiste_0 +
+push dword ptr [esi]  +
+push eax  +
+push offset aCallingWsInO_1  +
+push 6  +
+push edi  +
+push ebx  +
+push dword ptr [ebp+var_1C]  +
+call ds:SetupWriteTextLog  +
+add esp 1Ch +
+jmp loc_10020F2  +
+mov eax [ebp-14h] +
+mov [ebp-24h] eax +
+xor eax eax +
+inc eax  +
+retn   +
+mov esp [ebp-18h] +
+mov eax [ebp-24h] +
+mov eax [eax] +
+mov eax [eax] +
+mov [ebp-20h] eax +
+xor ebx ebx +
+mov eax [ebp+8] +
+cmp [eax+0Ch] ebx +
+mov ecx offset aDllregisters_0 +
+jnz loc_10020CC  +
+mov ecx offset aDllunregiste_0 +
+push dword ptr [eax]  +
+push ecx  +
+push offset aCallingWsInO_3  +
+push 1  +
+push 2  +
+pop edi  +
+push edi  +
+push ebx  +
+push dword ptr [ebp+var_1C]  +
+call ds:SetupWriteTextLog  +
+push offset aWowreg32___e_2  +
+push edi  +
+call sub_1001D5B  +
+add esp 24h +
+mov [ebp+ms_exc.disabled] 0FFFFFFFEh +
+push offset aWowreg32___reg  +
+push edi  +
+call sub_1001D5B  +
+pop ecx  +
+pop ecx  +
+jmp loc_1002143  +
+call ds:GetLastError  +
+mov [ebp+var_20] eax +
+cmp [esi+0Ch] ebx +
+mov eax offset aDllregisters_0 +
+jnz loc_1002120  +
+mov eax offset aDllunregiste_0 +
+push [ebp+var_20]  +
+push dword ptr [esi]  +
+push eax  +
+push offset aExportedFuncti  +
+push 1  +
+push 2  +
+pop edi  +
+push edi  +
+push ebx  +
+push dword ptr [ebp+var_1C]  +
+call ds:SetupWriteTextLog  +
+mov eax [ebp+arg_8] +
+mov [eax] edi +
+add esp 20h +
+mov eax [ebp+var_20] +
+call __SEH_epilog4  +
+retn 0Ch  +
+***
+call __SEH_prolog4  +
+xor ebx ebx +
+mov [ebp+var_1C] ebx +
+xor edi edi +
+mov esi [ebp+arg_0] +
+mov eax [esi+8] +
+mov dword ptr [ebp+var_20] eax +
+push offset aWowreg32Loadin  +
+push 2  +
+call sub_1001D5B  +
+pop ecx  +
+pop ecx  +
+cmp dword_1004024 ebx +
+jz loc_100219F  +
+mov eax large fs:18h +
+mov ecx [esi] +
+mov eax [eax+0F70h] +
+mov [eax+14C0h] ecx +
+mov [eax+14C4h] ebx +
+mov [ebp+ms_exc.disabled] ebx +
+push dword ptr [esi]  +
+call ds:LoadLibraryW  +
+mov ecx [ebp+arg_4] +
+mov [ecx] eax +
+mov [ebp+ms_exc.disabled] 0FFFFFFFEh +
+jmp loc_10021D3  +
+mov eax [ebp-14h] +
+mov [ebp-1Ch] eax +
+xor eax eax +
+inc eax  +
+retn   +
+mov esp [ebp-18h] +
+mov dword ptr [ebp-4] 0FFFFFFFEh +
+xor ebx ebx +
+mov esi [ebp+8] +
+mov edi ebx +
+cmp dword_1004024 ebx +
+jz loc_10021F3  +
+mov eax large fs:18h +
+mov eax [eax+0F70h] +
+mov [eax+14C0h] ebx +
+mov [eax+14C4h] ebx +
+cmp [ebp+var_1C] ebx +
+jz loc_1002225  +
+push dword ptr [esi]  +
+push offset aAnExceptionOcc  +
+push 1  +
+push 2  +
+push ebx  +
+push dword ptr [ebp+var_20]  +
+call ds:SetupWriteTextLog  +
+push offset aWowreg32___exc  +
+push 2  +
+call sub_1001D5B  +
+add esp 20h +
+mov eax [ebp+var_1C] +
+mov eax [eax] +
+mov edi [eax] +
+jmp loc_100226E  +
+mov eax [ebp+arg_4] +
+cmp [eax] ebx +
+jnz loc_1002260  +
+mov edi ds:GetLastError +
+call edi  +
+call edi  +
+mov edi eax +
+push edi  +
+push offset aWowreg32___dll  +
+push 2  +
+call sub_1001D5B  +
+push edi  +
+push dword ptr [esi]  +
+push offset aFailedToLoadTh  +
+push 1  +
+push 2  +
+push ebx  +
+push dword ptr [ebp+var_20]  +
+call ds:SetupWriteTextLog  +
+add esp 28h +
+jmp loc_100226E  +
+push offset aWowreg32___d_0  +
+push 2  +
+call sub_1001D5B  +
+pop ecx  +
+pop ecx  +
+mov eax edi +
+call __SEH_epilog4  +
+retn 8  +
+***
+call __SEH_prolog4_GS  +
+mov esi [ebp+arg_0] +
+mov edi [ebp+arg_4] +
+mov [ebp+var_244] edi +
+and [ebp+hModule] 0 +
+push offset aWowreg32Callin  +
+push 2  +
+pop ebx  +
+push ebx  +
+call sub_1001D5B  +
+pop ecx  +
+pop ecx  +
+mov [ebp+var_240] esi +
+lea eax [esi+208h] +
+mov [ebp+var_230] eax +
+mov [ebp+var_238] ebx +
+mov ebx [esi+414h] +
+mov [ebp+var_234] ebx +
+mov eax [esi+410h] +
+mov [ebp+var_23C] eax +
+push esi  +
+push 104h  +
+lea eax [ebp+PathName] +
+push eax  +
+call sub_1001C8C  +
+push 5Ch  +
+lea eax [ebp+PathName] +
+push eax  +
+call ds:wcsrchr  +
+pop ecx  +
+pop ecx  +
+xor esi esi +
+cmp eax esi +
+jz loc_100230D  +
+xor ecx ecx +
+mov [eax] cx +
+lea eax [ebp+PathName] +
+push eax  +
+call ds:SetCurrentDirectoryW  +
+push esi  +
+call ds:OleInitialize  +
+mov [ebp+dwErrCode] eax +
+cmp eax esi +
+jz loc_1002342  +
+or dword ptr [edi] 0FFFFFFFFh +
+push eax  +
+push offset aWowreg32Oleini  +
+push esi  +
+call sub_1001D5B  +
+add esp 0Ch +
+jmp loc_100246E  +
+push offset aWowreg32BackFr  +
+push 2  +
+call sub_1001D5B  +
+pop ecx  +
+pop ecx  +
+mov [ebp+ms_exc.disabled] esi +
+lea eax [ebp+hModule] +
+push eax  +
+lea eax [ebp+var_240] +
+push eax  +
+call sub_1002153  +
+mov [ebp+dwErrCode] eax +
+cmp eax esi +
+jnz loc_100240E  +
+cmp ebx esi +
+jz loc_10023C0  +
+test byte ptr [ebp+var_23C] 1 +
+jz loc_100239A  +
+push edi  +
+push [ebp+hModule]  +
+lea eax [ebp+var_240] +
+push eax  +
+call sub_1001F58  +
+mov [ebp+dwErrCode] eax +
+test byte ptr [ebp+var_23C] 2 +
+jz loc_100241A  +
+cmp [ebp+dwErrCode] esi +
+jnz loc_100241A  +
+push edi  +
+push [ebp+hModule]  +
+lea eax [ebp+var_240] +
+push eax  +
+call sub_1001DB3  +
+jmp loc_1002406  +
+test byte ptr [ebp+var_23C] 2 +
+jz loc_10023E2  +
+push edi  +
+push [ebp+hModule]  +
+lea eax [ebp+var_240] +
+push eax  +
+call sub_1001DB3  +
+mov [ebp+dwErrCode] eax +
+test byte ptr [ebp+var_23C] 1 +
+jz loc_100241A  +
+cmp [ebp+dwErrCode] esi +
+jnz loc_100241A  +
+push edi  +
+push [ebp+hModule]  +
+lea eax [ebp+var_240] +
+push eax  +
+call sub_1001F58  +
+mov [ebp+dwErrCode] eax +
+jmp loc_100241A  +
+mov [ebp+hModule] esi +
+mov dword ptr [edi] 1 +
+mov [ebp+ms_exc.disabled] 0FFFFFFFEh +
+jmp loc_1002446  +
+xor eax eax +
+inc eax  +
+retn   +
+mov esp [ebp-18h] +
+mov dword ptr [ebp-228h] 0Dh +
+mov edi [ebp-244h] +
+or dword ptr [edi] 0FFFFFFFFh +
+mov dword ptr [ebp-4] 0FFFFFFFEh +
+xor esi esi +
+cmp [ebp+hModule] esi +
+jz loc_100245A  +
+push [ebp+hModule]  +
+call ds:FreeLibrary  +
+call ds:OleUninitialize  +
+push offset aWowreg32Back_0  +
+push 2  +
+call sub_1001D5B  +
+pop ecx  +
+pop ecx  +
+cmp [ebp+dwErrCode] esi +
+jnz loc_1002478  +
+mov [edi] esi +
+push [ebp+dwErrCode]  +
+call ds:SetLastError  +
+xor eax eax +
+cmp [ebp+dwErrCode] esi +
+setz al  +
+call __SEH_epilog4_GS  +
+retn 8  +
+***
+mov edi edi +
+push ebp  +
+mov ebp esp +
+sub esp 34h +
+push esi  +
+xor esi esi +
+push esi  +
+push 4  +
+lea eax [ebp+lpBaseAddress] +
+push eax  +
+push 1Ah  +
+push 0FFFFFFFFh  +
+mov [ebp+hEvent] esi +
+mov [ebp+var_8] esi +
+mov [ebp+lpBaseAddress] esi +
+call ds:NtQueryInformationProcess  +
+test eax eax +
+jl loc_10024D4  +
+cmp [ebp+lpBaseAddress] esi +
+jz loc_10024D4  +
+mov dword_1004024 1 +
+lea eax [ebp+pNumArgs] +
+push eax  +
+mov [ebp+var_14] esi +
+call ds:GetCommandLineW  +
+push eax  +
+call ds:CommandLineToArgvW  +
+cmp eax esi +
+jnz loc_10024FE  +
+push offset aWowreg32LowMem  +
+push esi  +
+call sub_1001D5B  +
+pop ecx  +
+pop ecx  +
+jmp loc_1002712  +
+push eax  +
+push [ebp+pNumArgs]  +
+call sub_1001B35  +
+test eax eax +
+jnz loc_1002522  +
+push offset aWowreg32Invali  +
+push esi  +
+call sub_1001D5B  +
+pop ecx  +
+pop ecx  +
+call sub_1001C22  +
+jmp loc_1002712  +
+push edi  +
+push lpName  +
+push esi  +
+push 6  +
+call ds:OpenFileMappingW  +
+mov [ebp+hObject] eax +
+cmp eax esi +
+jnz loc_1002559  +
+call ds:GetLastError  +
+push eax  +
+push lpName  +
+push offset aWowreg32Openfi  +
+push esi  +
+call sub_1001D5B  +
+add esp 10h +
+jmp loc_10026ED  +
+push esi  +
+push esi  +
+push esi  +
+push 6  +
+push eax  +
+call ds:MapViewOfFile  +
+mov [ebp+lpBaseAddress] eax +
+cmp eax esi +
+jnz loc_1002586  +
+call ds:GetLastError  +
+push eax  +
+push offset aWowreg32Mapvie  +
+push esi  +
+call sub_1001D5B  +
+add esp 0Ch +
+jmp loc_10026DF  +
+mov edi ds:OpenEventW +
+push ebx  +
+push dword_1004380  +
+mov ebx 100002h +
+push esi  +
+push ebx  +
+call edi  +
+mov [ebp+hEvent] eax +
+cmp eax esi +
+jnz loc_10025B2  +
+call ds:GetLastError  +
+push eax  +
+push dword_1004380  +
+jmp loc_10025D0  +
+push dword_1004378  +
+push esi  +
+push ebx  +
+call edi  +
+mov [ebp+var_8] eax +
+cmp eax esi +
+jnz loc_10025E3  +
+call ds:GetLastError  +
+push eax  +
+push dword_1004378  +
+push offset aWowreg32Openev  +
+push esi  +
+call sub_1001D5B  +
+add esp 10h +
+jmp loc_10026DE  +
+mov eax [ebp+hEvent] +
+mov [ebp+pHandles] eax +
+push 6  +
+push 4FFh  +
+push 0EA60h  +
+lea eax [ebp+pHandles] +
+xor edi edi +
+push eax  +
+inc edi  +
+push edi  +
+call ds:MsgWaitForMultipleObjectsEx  +
+mov ebx eax +
+cmp ebx edi +
+jnz loc_1002641  +
+push edi  +
+push esi  +
+push esi  +
+push esi  +
+lea eax [ebp+Msg] +
+push eax  +
+call ds:PeekMessageW  +
+test eax eax +
+jz loc_10025E9  +
+lea eax [ebp+Msg] +
+push eax  +
+call ds:TranslateMessage  +
+lea eax [ebp+Msg] +
+push eax  +
+call ds:DispatchMessageW  +
+push edi  +
+push esi  +
+push esi  +
+push esi  +
+lea eax [ebp+Msg] +
+push eax  +
+call ds:PeekMessageW  +
+test eax eax +
+jnz loc_100261B  +
+cmp ebx 102h +
+jz loc_10026A4  +
+cmp ebx esi +
+jz loc_1002652  +
+cmp ebx 0FFFFFFFFh +
+jnz loc_10025E9  +
+push [ebp+hEvent]  +
+call ds:ResetEvent  +
+mov edi [ebp+lpBaseAddress] +
+lea eax [ebp+var_14] +
+push eax  +
+push edi  +
+call sub_100227D  +
+mov ebx eax +
+cmp ebx esi +
+jz loc_1002672  +
+xor eax eax +
+jmp loc_1002678  +
+call ds:GetLastError  +
+push [ebp+var_8]  +
+mov [edi] eax +
+mov eax ebx +
+neg eax  +
+sbb eax eax +
+not eax  +
+and eax [ebp+var_14] +
+mov [edi+4] eax +
+call ds:SetEvent  +
+cmp ebx esi +
+jz loc_10025E9  +
+inc dword_1004020  +
+jmp loc_10025E9  +
+mov eax dword_1004020 +
+xor ecx ecx +
+cmp eax esi +
+setnz cl  +
+push eax  +
+push offset aRegisteredDCon  +
+mov [ebp+var_14] ecx +
+call ds:__iob_func  +
+add eax 20h +
+push eax  +
+call ds:fprintf  +
+push dword_1004020  +
+push offset aWowreg32Regi_0  +
+push 3  +
+call sub_1001D5B  +
+add esp 18h +
+pop ebx  +
+cmp [ebp+lpBaseAddress] esi +
+jz loc_10026ED  +
+push [ebp+lpBaseAddress]  +
+call ds:UnmapViewOfFile  +
+mov edi ds:CloseHandle +
+cmp [ebp+hObject] esi +
+jz loc_10026FD  +
+push [ebp+hObject]  +
+call edi  +
+cmp [ebp+hEvent] esi +
+jz loc_1002707  +
+push [ebp+hEvent]  +
+call edi  +
+cmp [ebp+var_8] esi +
+jz loc_1002711  +
+push [ebp+var_8]  +
+call edi  +
+pop edi  +
+mov eax [ebp+var_14] +
+pop esi  +
+leave   +
+retn   +
+***
+mov edi edi +
+push ebp  +
+mov ebp esp +
+push esi  +
+mov esi [ebp+arg_0] +
+xor eax eax +
+jmp loc_1002739  +
+test eax eax +
+jnz loc_100273E  +
+mov ecx [esi] +
+test ecx ecx +
+jz loc_1002736  +
+call ecx  +
+add esi 4 +
+cmp esi [ebp+arg_4] +
+jb loc_100272A  +
+pop esi  +
+pop ebp  +
+retn   +
+***
+mov eax dword_100404C +
+push offset dword_100403C  +
+push dword_1004048  +
+mov dword_100403C eax +
+push offset dword_100402C  +
+push offset dword_1004030  +
+push offset pNumArgs  +
+call ds:__getmainargs  +
+add esp 14h +
+mov dword_1004038 eax +
+retn   +
+***
+call __SEH_prolog4  +
+xor ebx ebx +
+mov [ebp+ms_exc.disabled] ebx +
+mov eax large fs:18h +
+mov esi [eax+4] +
+mov [ebp+var_1C] ebx +
+mov edi offset Destination +
+push ebx  +
+push esi  +
+push edi  +
+call ds:InterlockedCompareExchange  +
+cmp eax ebx +
+jz loc_10027C6  +
+cmp eax esi +
+jnz loc_10027B9  +
+xor esi esi +
+inc esi  +
+mov [ebp+var_1C] esi +
+jmp loc_10027C9  +
+push 3E8h  +
+call ds:Sleep  +
+jmp loc_10027A0  +
+xor esi esi +
+inc esi  +
+mov eax dword_100438C +
+cmp eax esi +
+jnz loc_10027DC  +
+push 1Fh  +
+call _amsg_exit  +
+pop ecx  +
+jmp loc_1002817  +
+mov eax dword_100438C +
+test eax eax +
+jnz loc_1002811  +
+mov dword_100438C esi +
+push offset dword_1001120  +
+push offset dword_1001114  +
+call sub_100271D  +
+pop ecx  +
+pop ecx  +
+test eax eax +
+jz loc_1002817  +
+mov [ebp+ms_exc.disabled] 0FFFFFFFEh +
+mov eax 0FFh +
+jmp loc_10028E1  +
+mov dword_1004044 esi +
+mov eax dword_100438C +
+cmp eax esi +
+jnz loc_100283B  +
+push offset dword_1001110  +
+push offset dword_1001108  +
+call _initterm  +
+pop ecx  +
+pop ecx  +
+mov dword_100438C 2 +
+cmp [ebp+var_1C] ebx +
+jnz loc_1002848  +
+push ebx  +
+push edi  +
+call ds:InterlockedExchange  +
+cmp dword_1004394 ebx +
+jz loc_1002869  +
+push offset dword_1004394  +
+call sub_1002BE9  +
+pop ecx  +
+test eax eax +
+jz loc_1002869  +
+push ebx  +
+push 2  +
+push ebx  +
+call dword_1004394  +
+push dword_100402C  +
+push dword_1004030  +
+push pNumArgs  +
+call sub_100249C  +
+add esp 0Ch +
+mov dword_1004040 eax +
+cmp dword_1004034 ebx +
+jnz loc_10028C7  +
+push eax  +
+call ds:exit  +
+mov eax [ebp-14h] +
+mov ecx [eax] +
+mov ecx [ecx] +
+mov [ebp-20h] ecx +
+push eax  +
+push ecx  +
+call _XcptFilter  +
+pop ecx  +
+pop ecx  +
+retn   +
+mov esp [ebp-18h] +
+mov eax [ebp-20h] +
+mov dword_1004040 eax +
+xor ebx ebx +
+cmp dword_1004034 ebx +
+jnz loc_10028C7  +
+push eax  +
+call ds:_exit  +
+cmp dword_1004044 ebx +
+jnz loc_10028D5  +
+call ds:_cexit  +
+mov [ebp+ms_exc.disabled] 0FFFFFFFEh +
+mov eax dword_1004040 +
+call __SEH_epilog4  +
+retn   +
+***
+mov eax 5A4Dh +
+cmp ds:1000000h ax +
+jz loc_10028FE  +
+xor eax eax +
+jmp loc_100294B  +
+mov eax ds:100003Ch +
+lea eax [eax+1000000h] +
+cmp dword ptr [eax] 4550h +
+jnz loc_10028FA  +
+movzx ecx word ptr [eax+18h] +
+cmp ecx 10Bh +
+jz loc_1002938  +
+cmp ecx 20Bh +
+jnz loc_10028FA  +
+cmp dword ptr [eax+84h] 0Eh +
+jbe loc_10028FA  +
+xor ecx ecx +
+cmp [eax+0F8h] ecx +
+jmp loc_1002946  +
+cmp dword ptr [eax+74h] 0Eh +
+jbe loc_10028FA  +
+xor ecx ecx +
+cmp [eax+0E8h] ecx +
+setnz cl  +
+mov eax ecx +
+push 1  +
+mov dword_1004034 eax +
+call sub_1002CF7  +
+push eax  +
+call ds:__set_app_type  +
+or dword_1004384 0FFFFFFFFh +
+or dword_1004388 0FFFFFFFFh +
+pop ecx  +
+pop ecx  +
+call ds:__p__fmode  +
+mov ecx dword_1004054 +
+mov [eax] ecx +
+call ds:__p__commode  +
+mov ecx dword_1004050 +
+mov [eax] ecx +
+call sub_1002C89  +
+cmp dword_1004018 0 +
+jnz loc_10029A4  +
+push offset sub_1002C89  +
+call ds:__setusermatherr  +
+pop ecx  +
+call sub_1002C71  +
+xor eax eax +
+retn   +
+***
+call sub_1002D36  +
+jmp sub_100277E  +
+***
+cmp ecx dword_1004000 +
+jnz loc_10029CB  +
+retn 0  +
+jmp loc_1002DCC  +
+***
+sub ecx eax +
+sbb eax eax +
+not eax  +
+and ecx eax +
+mov eax esp +
+and eax 0FFFFF000h +
+cmp ecx eax +
+jb cs20  +
+mov eax ecx +
+pop ecx  +
+xchg eax esp +
+mov eax [eax] +
+mov [esp+0] eax +
+retn   +
+sub eax 1000h +
+test [eax] eax +
+jmp cs10  +
+***
+mov eax [esp+8+arg_4] +
+mov ecx [ebp-10h] +
+mov large fs:0 ecx +
+pop ecx  +
+pop edi  +
+pop edi  +
+pop esi  +
+pop ebx  +
+mov esp ebp +
+pop ebp  +
+push ecx  +
+retn   +
+***
+mov edi edi +
+push ebp  +
+mov ebp esp +
+push dword ptr [ebp+14h]  +
+push dword ptr [ebp+10h]  +
+push dword ptr [ebp+0Ch]  +
+push dword ptr [ebp+8]  +
+push offset sub_10029C0  +
+push offset dword_1004000  +
+call _except_handler4_common  +
+add esp 18h +
+pop ebp  +
+retn   +
+***
+mov eax [esp+8+arg_4] +
+mov ecx [ebp-1Ch] +
+xor ecx ebp +
+call sub_10029C0  +
+jmp __SEH_epilog4  +
+***
+mov edi edi +
+push ebp  +
+mov ebp esp +
+mov eax [ebp+8] +
+mov eax [eax] +
+cmp dword ptr [eax] 0E06D7363h +
+jnz loc_1002B31  +
+cmp dword ptr [eax+10h] 3 +
+jnz loc_1002B31  +
+mov eax [eax+14h] +
+cmp eax 19930520h +
+jz loc_1002B2B  +
+cmp eax 19930521h +
+jz loc_1002B2B  +
+cmp eax 19930522h +
+jz loc_1002B2B  +
+cmp eax 1994000h +
+jnz loc_1002B31  +
+call ds:?terminate@@YAXXZ  +
+xor eax eax +
+pop ebp  +
+retn 4  +
+***
+push offset loc_1002AF4  +
+call ds:SetUnhandledExceptionFilter  +
+xor eax eax +
+retn   +
+***
+mov edi edi +
+push ebp  +
+mov ebp esp +
+mov ecx [ebp+arg_0] +
+mov eax 5A4Dh +
+cmp [ecx] ax +
+jz loc_1002B76  +
+xor eax eax +
+pop ebp  +
+retn   +
+mov eax [ecx+3Ch] +
+add eax ecx +
+cmp dword ptr [eax] 4550h +
+jnz loc_1002B72  +
+xor edx edx +
+mov ecx 10Bh +
+cmp [eax+18h] cx +
+setz dl  +
+mov eax edx +
+pop ebp  +
+retn   +
+***
+mov edi edi +
+push ebp  +
+mov ebp esp +
+mov eax [ebp+arg_0] +
+mov ecx [eax+3Ch] +
+add ecx eax +
+movzx eax word ptr [ecx+14h] +
+push ebx  +
+push esi  +
+movzx esi word ptr [ecx+6] +
+xor edx edx +
+push edi  +
+lea eax [eax+ecx+18h] +
+test esi esi +
+jbe loc_1002BDD  +
+mov edi [ebp+arg_4] +
+mov ecx [eax+0Ch] +
+cmp edi ecx +
+jb loc_1002BD5  +
+mov ebx [eax+8] +
+add ebx ecx +
+cmp edi ebx +
+jb loc_1002BDF  +
+inc edx  +
+add eax 28h +
+cmp edx esi +
+jb loc_1002BC5  +
+xor eax eax +
+pop edi  +
+pop esi  +
+pop ebx  +
+pop ebp  +
+retn   +
+***
+call __SEH_prolog4  +
+and [ebp+ms_exc.disabled] 0 +
+mov esi 1000000h +
+push esi  +
+call sub_1002B60  +
+pop ecx  +
+test eax eax +
+jz loc_1002C46  +
+mov eax [ebp+arg_0] +
+sub eax esi +
+push eax  +
+push esi  +
+call sub_1002BA0  +
+pop ecx  +
+pop ecx  +
+test eax eax +
+jz loc_1002C46  +
+mov eax [eax+24h] +
+shr eax 1Fh +
+not eax  +
+and eax 1 +
+mov [ebp+ms_exc.disabled] 0FFFFFFFEh +
+jmp loc_1002C4F  +
+mov eax [ebp-14h] +
+mov eax [eax] +
+mov eax [eax] +
+xor ecx ecx +
+cmp eax 0C0000005h +
+setz cl  +
+mov eax ecx +
+retn   +
+mov esp [ebp-18h] +
+mov [ebp+ms_exc.disabled] 0FFFFFFFEh +
+xor eax eax +
+call __SEH_epilog4  +
+retn   +
+***
+call ds:_controlfp  +
+pop ecx  +
+pop ecx  +
+retn   +
+***
+retn   +
+***
+call __SEH_prolog4  +
+xor eax eax +
+mov ecx [ebp+arg_0] +
+test ecx ecx +
+jz loc_1002CEA  +
+cmp ecx 0FFFFFFFFh +
+jz loc_1002CEA  +
+and [ebp+ms_exc.disabled] eax +
+mov edx 5A4Dh +
+cmp [ecx] dx +
+jnz loc_1002CE3  +
+mov edx [ecx+3Ch] +
+test edx edx +
+jl loc_1002CE3  +
+cmp edx 10000000h +
+jnb loc_1002CE3  +
+lea eax [edx+ecx] +
+mov [ebp+var_1C] eax +
+cmp dword ptr [eax] 4550h +
+jz loc_1002CE3  +
+jmp loc_1002CDE  +
+xor eax eax +
+inc eax  +
+retn   +
+mov esp [ebp-18h] +
+xor eax eax +
+mov [ebp+var_1C] eax +
+mov [ebp+ms_exc.disabled] 0FFFFFFFEh +
+call __SEH_epilog4  +
+retn 4  +
+***
+mov edi edi +
+push ebp  +
+mov ebp esp +
+push 0  +
+call ds:GetModuleHandleA  +
+test eax eax +
+jz loc_1002D2C  +
+push eax  +
+call sub_1002C91  +
+test eax eax +
+jz loc_1002D2C  +
+movzx eax word ptr [eax+5Ch] +
+cmp ax 2 +
+jnz loc_1002D21  +
+push 2  +
+pop eax  +
+pop ebp  +
+retn   +
+cmp ax 3 +
+jnz loc_1002D2C  +
+xor eax eax +
+inc eax  +
+pop ebp  +
+retn   +
+mov eax [ebp+arg_0] +
+pop ebp  +
+retn   +
+***
+mov edi edi +
+push ebp  +
+mov ebp esp +
+sub esp 10h +
+mov eax dword_1004000 +
+and [ebp+SystemTimeAsFileTime.dwLowDateTime] 0 +
+and [ebp+SystemTimeAsFileTime.dwHighDateTime] 0 +
+push ebx  +
+push edi  +
+mov edi 0BB40E64Eh +
+mov ebx 0FFFF0000h +
+cmp eax edi +
+jz loc_1002D68  +
+test eax ebx +
+jz loc_1002D68  +
+not eax  +
+mov dword_1004004 eax +
+jmp loc_1002DC3  +
+push esi  +
+lea eax [ebp+SystemTimeAsFileTime] +
+push eax  +
+call ds:GetSystemTimeAsFileTime  +
+mov esi [ebp+SystemTimeAsFileTime.dwHighDateTime] +
+xor esi [ebp+SystemTimeAsFileTime.dwLowDateTime] +
+call ds:GetCurrentProcessId  +
+xor esi eax +
+call ds:GetCurrentThreadId  +
+xor esi eax +
+call ds:GetTickCount  +
+xor esi eax +
+lea eax [ebp+PerformanceCount] +
+push eax  +
+call ds:QueryPerformanceCounter  +
+mov eax dword ptr [ebp+PerformanceCount+4] +
+xor eax dword ptr [ebp+PerformanceCount] +
+xor esi eax +
+cmp esi edi +
+jz loc_1002DAF  +
+test dword_1004000 ebx +
+jnz loc_1002DB4  +
+mov esi 0BB40E64Fh +
+mov dword_1004000 esi +
+not esi  +
+mov dword_1004004 esi +
+pop esi  +
+pop edi  +
+pop ebx  +
+leave   +
+retn   +
+***
+mov edi edi +
+push ebp  +
+mov ebp esp +
+sub esp 328h +
+mov dword_1004158 eax +
+mov dword_1004154 ecx +
+mov dword_1004150 edx +
+mov dword_100414C ebx +
+mov dword_1004148 esi +
+mov dword_1004144 edi +
+mov word_1004170 ss +
+mov word_1004164 cs +
+mov word_1004140 ds +
+mov word_100413C es +
+mov word_1004138 fs +
+mov word_1004134 gs +
+pushf   +
+pop dword_1004168  +
+mov eax [ebp+0] +
+mov dword_100415C eax +
+mov eax [ebp+4] +
+mov dword_1004160 eax +
+lea eax [ebp+8] +
+mov dword_100416C eax +
+mov eax [ebp-320h] +
+mov dword_10040A8 10001h +
+mov eax dword_1004160 +
+mov dword_1004064 eax +
+mov dword_1004058 0C0000409h +
+mov dword_100405C 1 +
+mov eax dword_1004000 +
+mov [ebp-328h] eax +
+mov eax dword_1004004 +
+mov [ebp-324h] eax +
+push 0  +
+call ds:SetUnhandledExceptionFilter  +
+push offset ExceptionInfo  +
+call ds:UnhandledExceptionFilter  +
+push 0C0000409h  +
+call ds:GetCurrentProcess  +
+push eax  +
+call ds:TerminateProcess  +
+leave   +
+retn   +
+***
